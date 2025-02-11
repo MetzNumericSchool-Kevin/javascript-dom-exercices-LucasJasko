@@ -57,16 +57,30 @@ const listePotions = document.querySelector("#liste_potions");
 const template = document.querySelector("#template_potion");
 
 potions.forEach((potion) => {
-  const nom = potion.nom;
-  const desc = potion.description;
-  const prix = potion.prix;
+  const newPotion = template.content.cloneNode(true);
+  const h5 = newPotion.querySelector(".nom_potion");
+  const span = newPotion.querySelector(".prix_potion");
+  const p = newPotion.querySelector(".description_potion");
+  h5.textContent = potion.nom;
+  span.textContent = potion.prix;
+  p.textContent = potion.description;
+  listePotions.append(newPotion);
+});
 
-  potion = template.content.cloneNode(true);
-  const h5 = potion.querySelector(".nom_potion");
-  const span = potion.querySelector(".prix_potion");
-  const p = potion.querySelector(".description_potion");
-  h5.textContent = nom;
-  span.textContent = prix;
-  p.textContent = desc;
-  listePotions.append(potion);
+// Plus de potions, nous avons besoin de plus de potions !
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  const ajoutPotion = template.content.cloneNode(true);
+  const h5 = ajoutPotion.querySelector(".nom_potion");
+  const span = ajoutPotion.querySelector(".prix_potion");
+  const p = ajoutPotion.querySelector(".description_potion");
+
+  h5.textContent = formData.get("nom");
+  span.textContent = formData.get("prix");
+  p.textContent = formData.get("description");
+  listePotions.append(ajoutPotion);
 });
