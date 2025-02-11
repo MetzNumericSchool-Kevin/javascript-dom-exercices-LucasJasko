@@ -19,3 +19,20 @@ const callArchi = document.querySelector("#call_archibald");
 callArchi.addEventListener("click", () => {
   return alert("🧙‍♂️ J'arrive, j'arrive Aventurier !");
 });
+
+// Faisons un peu de magie 🪄
+const boites = document.querySelectorAll(".boite");
+const btn1 = document.querySelector("#btn_change_red");
+const btn2 = document.querySelector("#btn_change_blue");
+const btn3 = document.querySelector("#btn_change_green");
+
+btn1.addEventListener("click", () => {
+  boites[0].style.background = "red";
+});
+btn2.addEventListener("click", () => {
+  boites[0].style.background = "blue";
+  boites[1].style.background = "blue";
+});
+btn3.addEventListener("click", () => {
+  boites.forEach((boite) => (boite.style.background = "green"));
+});
