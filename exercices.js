@@ -13,3 +13,9 @@ descriptionBoutique.appendChild(newText);
 // Roger, enfoiré !
 const blague = document.querySelector("#blague_de_roger_le_sorcier");
 blague.remove();
+
+// Archibald n'est pas là, appelons le !
+const callArchi = document.querySelector("#call_archibald");
+callArchi.addEventListener("click", () => {
+  return alert("🧙‍♂️ J'arrive, j'arrive Aventurier !");
+});
