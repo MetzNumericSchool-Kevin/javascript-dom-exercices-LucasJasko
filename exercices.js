@@ -36,3 +36,37 @@ btn2.addEventListener("click", () => {
 btn3.addEventListener("click", () => {
   boites.forEach((boite) => (boite.style.background = "green"));
 });
+
+// Aventurier, voici ma boutique !
+const potions = [
+  {
+    nom: "Potion de soin",
+    description:
+      "Cette potion rouge vif a une odeur de fraise des bois. Un seul gorgée et vos blessures se referment comme par magie ! Effets secondaires possibles: cheveux roses pendant 24h.",
+    prix: 10,
+  },
+  {
+    nom: "Potion de sommeil",
+    description:
+      "Un liquide bleu nuit qui sent la lavande et les rêves. Une goutte et vous dormirez comme un bébé dragon ! Attention: ne pas utiliser si vous devez combattre un troll dans les prochaines 8 heures.",
+    prix: 50,
+  },
+];
+
+const listePotions = document.querySelector("#liste_potions");
+const template = document.querySelector("#template_potion");
+
+potions.forEach((potion) => {
+  const nom = potion.nom;
+  const desc = potion.description;
+  const prix = potion.prix;
+
+  potion = template.content.cloneNode(true);
+  const h5 = potion.querySelector(".nom_potion");
+  const span = potion.querySelector(".prix_potion");
+  const p = potion.querySelector(".description_potion");
+  h5.textContent = nom;
+  span.textContent = prix;
+  p.textContent = desc;
+  listePotions.append(potion);
+});
