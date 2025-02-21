@@ -56,7 +56,7 @@ const potions = [
 const listePotions = document.querySelector("#liste_potions");
 const template = document.querySelector("#template_potion");
 
-potions.forEach((potion) => {
+function nouvelleCartePotion(potion, listePotions) {
   const newPotion = template.content.cloneNode(true);
   const h5 = newPotion.querySelector(".nom_potion");
   const span = newPotion.querySelector(".prix_potion");
@@ -65,6 +65,10 @@ potions.forEach((potion) => {
   span.textContent = potion.prix;
   p.textContent = potion.description;
   listePotions.append(newPotion);
+}
+
+potions.forEach((potion) => {
+  nouvelleCartePotion(potion, listePotions);
 });
 
 // Plus de potions, nous avons besoin de plus de potions !
@@ -73,6 +77,12 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(form);
+  potions.push({
+    nom: formData.get("nom"),
+    description: formData.get("description"),
+    prix: formData.get("prix"),
+  });
+  console.log(potions);
 
   const ajoutPotion = template.content.cloneNode(true);
   const h5 = ajoutPotion.querySelector(".nom_potion");
